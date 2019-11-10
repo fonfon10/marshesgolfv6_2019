@@ -1,2 +1,7 @@
-<H2> <%= link_to 'SIGNOUT', destroy_member_session_path, method: :delete  %></H2>
+<H2> <%= link_to destroy_member_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt "></i> Signout
+
+  <% end %>
+
+</H2>
 
