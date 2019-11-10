@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @member.name %>
+</p>
+
+<p>
+  <strong>Age group:</strong>
+  <%= @member.age_group_id %>
+</p>
+
+<p>
+  <strong>Membership:</strong>
+  <%= @member.membership_id %>
+</p>
+
+<p>
+  <strong>Lesson:</strong>
+  <%= @member.lesson %>
+</p>
+
+<%= link_to 'Edit', edit_member_path(@member) %> |
+<%= link_to 'Back', members_path %>
