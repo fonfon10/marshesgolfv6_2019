@@ -28,11 +28,6 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 
-gem 'bootstrap'
-gem 'jquery-rails'
-gem 'font-awesome-rails'
-
-
 gem 'devise'
 gem 'activeadmin'
 
