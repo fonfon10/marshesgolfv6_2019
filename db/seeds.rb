@@ -35,7 +35,7 @@ age_group_type_adult = AgeGroup.first
 age_group_type_junior = AgeGroup.last
 
 
-Member.create!(email: 'slafontaine10@gmail.com', password: 'numb10', password_confirmation: 'numb10', membership: membership_type_Admin, age_group: age_group_type_adult)
+Member.create!(email: 'slafontaine10@gmail.com', firstname: 'Serge', lastname: 'Lafontaine', password: 'numb10', password_confirmation: 'numb10', membership: membership_type_Admin, age_group: age_group_type_adult)
 
 
 

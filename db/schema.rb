@@ -45,7 +45,8 @@ ActiveRecord::Schema.define(version: 2019_11_10_025146) do
   end
 
   create_table "members", force: :cascade do |t|
-    t.string "name"
+    t.string "firstname"
+    t.string "lastname"
     t.integer "age_group_id"
     t.integer "membership_id"
     t.integer "lesson"
