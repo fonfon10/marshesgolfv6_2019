@@ -32,6 +32,9 @@ gem 'devise'
 gem 'activeadmin'
 gem 'bootstrap',  '~>4.3.1'
 
+# to allow setting keys and not storing values on GIT (passwords)
+gem 'figaro'  
+gem "better_errors"
 
 
 group :development, :test do
