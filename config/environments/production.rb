@@ -66,6 +66,8 @@ Rails.application.configure do
  # ActionMailer Config
 config.action_mailer.default_url_options = { :host => 'https://marsheswintergolf.herokuapp.com'}
 ActionMailer::Base.delivery_method = :smtp
+
+
 ActionMailer::Base.smtp_settings = {
  address: ‘smtp.sendgrid.net’,
  port: “25”,
