@@ -4,16 +4,16 @@
       <h2><%= pluralize(membership.errors.count, "error") %> prohibited this membership from being saved:</h2>
 
       <ul>
-        <% membership.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
+      <% membership.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
       </ul>
     </div>
   <% end %>
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, id: :membership_name %>
   </div>
 
   <div class="actions">

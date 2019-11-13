@@ -1,7 +1,128 @@
-<H2> <%= link_to destroy_member_session_path, method: :delete do %>
+<nav class="navbar navbar-expand-sm navbar-dark bg-success">
+    <%= link_to "Marshes Winter Academy", root_path, class:"navbar-brand" %>
+
+
+
+<% if current_member.present? %>
+
+  <!-- Collapsable button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+
+  <div class="collapse navbar-collapse" id="navbarsExample03">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link">
+          <%= link_to days_path do %>
+              <i class="fas fa-calendar "></i>Calendar
+          <% end %>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <% if current_member.membership.name == 'Admin' or current_member.membership.name == 'Operator' %>
+            <%= link_to dashboard_index_path do %>
+            <i class="fas fa-tachometer-alt"></i></i> Summary
+            <% end %>
+          <% end %>
+
+          <% if current_member.membership.name == 'Coaching' %>
+            <%= link_to dashboard_path(current_member) do %>
+                <i class="fas fa-tachometer-alt"></i> Summary
+            <% end %>
+          <% end %>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <%= link_to edit_member_registration_path(current_member) do %>
+              <i class="fas fa-user"></i> Profile
+          <% end %>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <%= link_to destroy_member_session_path, method: :delete do %>
               <i class="fas fa-sign-out-alt "></i> Signout
+          <% end %>
+        </a>
+      </li>
 
-  <% end %>
 
-</H2>
 
+
+  <% serge = Member.find_by firstname: "Serge" %>
+  <% if current_member == serge %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Membership Change</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown03">
+          <a class="dropdown-item">
+            <%= link_to 'Operator', membership_to_operator_membership_path(current_member)%>
+          </a>
+          <a class="dropdown-item">
+            <%= link_to 'Coaching', membership_to_coaching_membership_path(current_member)%>
+          </a>
+          <a class="dropdown-item">
+            <%= link_to 'Practice', membership_to_practice_membership_path(current_member)%>
+          </a>
+          <a class="dropdown-item">
+            <%= link_to 'Admin', membership_to_admin_membership_path(current_member)%>
+          </a>
+        </div>
+      </li>
+    <% end %>
+
+  <% if current_member.membership.name == 'Admin' %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown03">
+          <a class="dropdown-item">
+            <%= link_to members_path do %>
+              <i class="fas fa-plus"></i>Members
+            <% end %>
+          </a>
+          <a class="dropdown-item">
+            <%= link_to reservations_path do %>
+              <i class="fas fa-plus"></i>Reservations
+            <% end %>
+          </a>
+          <a class="dropdown-item">
+            <%= link_to age_groups_path do %>
+              <i class="fas fa-plus "></i>Age Group
+            <% end %>
+          </a>
+          <a class="dropdown-item">
+            <%= link_to memberships_path do %>
+                <i class="fas fa-plus"></i>Memberships
+            <% end %>
+          </a>
+          <a class="dropdown-item">
+            <%= link_to timeslots_path do %>
+                <i class="fas fa-plus"></i>Timeslots
+            <% end %>
+          </a>
+          <a class="dropdown-item">
+            <%= link_to activities_path do %>
+                <i class="fas fa-plus"></i>Activities
+            <% end %>
+          </a>
+        </div>
+      </li>
+    <% end %>
+
+
+
+
+    </ul>
+  </div>
+
+<% end %>
+
+
+
+
+
+</nav>

@@ -1,6 +1,15 @@
-<h1>Editing Age Group</h1>
 
-<%= render 'form', age_group: @age_group %>
+<% if current_member.membership.name == "Admin" %>
 
-<%= link_to 'Show', @age_group %> |
-<%= link_to 'Back', age_groups_path %>
+
+
+	<h1>Editing Age Group</h1>
+
+	<%= render 'form', age_group: @age_group %>
+
+	<%= link_to 'Show', @age_group %> |
+	<%= link_to 'Back', age_groups_path %>
+
+
+<% end %>
+

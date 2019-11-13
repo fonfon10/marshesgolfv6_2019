@@ -1,35 +1,43 @@
 <%= form_with(model: member, local: true) do |form| %>
   <% if member.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(member.errors.count, "error") %> prohibited this member from being saved:</h2>
+      <h2><%= pluralize(member.errors.count, "error") %> prohibited this reservation from being saved:</h2>
 
       <ul>
-        <% member.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
+      <% member.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
       </ul>
     </div>
   <% end %>
 
+
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label :firstname %>
+    <%= form.text_field :firstname, id: :member_firstname %>
   </div>
 
   <div class="field">
-    <%= form.label :age_group_id %>
-    <%= form.text_field :age_group_id %>
+    <%= form.label :lastname %>
+    <%= form.text_field :lastname, id: :member_lastname %>
   </div>
 
   <div class="field">
-    <%= form.label :membership_id %>
-    <%= form.number_field :membership_id %>
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :member_email %>
   </div>
 
   <div class="field">
-    <%= form.label :lesson %>
-    <%= form.number_field :lesson %>
+    <%= form.label :age_group %>
+    <%= form.select(:age_group_id, @age_groups)%>    
   </div>
+
+  <div class="field">
+    <%= form.label :membership %>
+    <%= form.select(:membership_id, @memberships)%>    
+  </div>
+
+
 
   <div class="actions">
     <%= form.submit %>

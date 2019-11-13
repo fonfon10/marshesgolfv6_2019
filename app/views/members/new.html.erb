@@ -1,5 +1,8 @@
-<h1>New Member</h1>
+<% if current_member.membership.name == "Admin" %>
 
-<%= render 'form', member: @member %>
 
-<%= link_to 'Back', members_path %>
+	<h1>New Member</h1>
+
+	<%= render 'form', member: @member %>
+
+<% end %>

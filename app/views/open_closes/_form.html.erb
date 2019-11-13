@@ -1,0 +1,22 @@
+<%= form_with(model: open_close, local: true) do |form| %>
+  <% if open_close.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(open_close.errors.count, "error") %> prohibited this open_close from being saved:</h2>
+
+      <ul>
+      <% open_close.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :open_close_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

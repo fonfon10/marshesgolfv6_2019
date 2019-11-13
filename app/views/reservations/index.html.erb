@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Reservations</h1>
+
+<table class="table-striped" >
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @days.each do |day| %>
+      <tr>
+        <td><%= day.name.strftime("%A") %></td>        
+        <td><%= link_to day.name, reservation_path(day) %></td>        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Reservation', new_reservation_path %>

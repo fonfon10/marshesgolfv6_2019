@@ -1,9 +1,15 @@
-<p id="notice"><%= notice %></p>
+<% if current_member.membership.name == "Admin" %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @membership.name %>
-</p>
 
-<%= link_to 'Edit', edit_membership_path(@membership) %> |
-<%= link_to 'Back', memberships_path %>
+	<p id="notice"><%= notice %></p>
+
+	<p>
+	  <strong>Name:</strong>
+	  <%= @membership.name %>
+	</p>
+
+	<%= link_to 'Edit', edit_membership_path(@membership) %> |
+	<%= link_to 'Back', memberships_path %>
+
+
+<% end %>

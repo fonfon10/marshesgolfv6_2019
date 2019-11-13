@@ -1,9 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @age_group.name %>
-</p>
+<% if current_member.membership.name == "Admin" %>
 
-<%= link_to 'Edit', edit_age_group_path(@age_group) %> |
-<%= link_to 'Back', age_groups_path %>
+
+	<p>
+	  <strong>Name:</strong>
+	  <%= @age_group.name %>
+	</p>
+
+	<%= link_to 'Edit', edit_age_group_path(@age_group) %> |
+	<%= link_to 'Back', age_groups_path %>
+
+
+<% end %>

@@ -1,0 +1,28 @@
+
+  <h1>Summary</h1>
+
+  <table class="table-striped" >
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Lastname</th>
+        <th>Firstname</th>
+        <th>Lessons</th>
+        <th>Pratices</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @members.each do |member| %>
+        <tr>
+          <td><%= link_to member.id, dashboard_path(member.id) %></td>        
+          <td><%= member.lastname %></td>        
+          <td><%= member.firstname %></td>  
+          <td><%= @reservations_lessons.where('member_id = ?',member.id).count %></td>  
+          <td><%= @reservations_practice.where('member_id = ?',member.id).count %></td>  
+
+        </tr>
+
+      <% end %>
+    </tbody>
+  </table>

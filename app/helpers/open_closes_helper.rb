@@ -1,0 +1,2 @@
+module OpenClosesHelper
+end

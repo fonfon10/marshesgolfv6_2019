@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  timeslot_id: 1
+  member_id: 1
+  activity_id: 1
+  day_id: 1
+
+two:
+  timeslot_id: 1
+  member_id: 1
+  activity_id: 1
+  day_id: 1

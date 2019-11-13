@@ -1,0 +1,215 @@
+<p id="notice"><%= notice %></p>
+
+<% firstday = Date.new(2018,12,31) %>
+<% today = Date.today  %>
+
+<% if  current_member.membership.name != "Operator"%>
+  
+<% if @reservations.count != 0 %>
+  
+  <h3><b><u>Reservations Summary</u></b></h3>
+  <p><i>To delete a reservation, click on <i class="fa fa-trash "></i> beside the desired cancellation date/timeslot</i></p>
+
+  <table class="table-striped" >
+    <thead>
+      <tr>
+        <th></th>
+        <th><i class="fas fa-calendar "></i></th>
+        <th><i class="fas fa-clock "></i></th>
+        <th><i class="fas fa-golf-ball "></i></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @reservations.each do |reservation| %>
+        <tr>
+
+        <% if reservation.day.name >= today  %>
+            
+
+         <td> <%= link_to cancel_reservation_path(reservation)  do %> 
+              <i class="fa fa-trash "></i>   
+              <% end %> 
+         </td>
+
+          <td><%= reservation.day.name.strftime("%a %b %-d '%y") %></td>        
+          <td><%= reservation.timeslot.start.strftime("%H:%M") %></td>        
+          <td><%= reservation.activity.name %></td>        
+        </tr>
+
+       <% end %>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<% end %>
+
+
+<% if  current_member.membership.name == "Operator"%>
+  
+  <h1>Lessons</h1>
+
+  <table class="table-striped" >
+    <thead>
+      <tr>
+        <th></th>
+        <th><i class="fas fa-calendar "></i></th>
+        <th><i class="fas fa-clock "></i></th>
+        <th><i class="fas fa-user "></i></th>
+        <th><i class="fas fa-golf-ball "></i></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @reservations.each do |reservation| %>
+        <tr>
+
+        <% if reservation.day.name >= today  %>
+            
+
+         <td> <%= link_to cancel_reservation_path(reservation)  do %> 
+              <i class="fa fa-trash "></i>   
+              <% end %> 
+         </td>
+
+          <td><%= reservation.day.name.strftime("%a %b %-d '%y") %></td>        
+          <td><%= reservation.timeslot.start.strftime("%H:%M") %></td>        
+          <td><%= reservation.member.lastname %>, <%= reservation.member.firstname %></td>        
+          <td><%= reservation.activity.name %></td>        
+        </tr>
+
+
+       <% end %>
+
+
+      <% end %>
+    </tbody>
+  </table>
+
+<% end %>
+
+
+
+
+
+
+
+<h3><b><u>Schedule</u></b></h3>
+<p><i>To book a Lesson or Practice Session, click on <span style="font-size: 1em; color: grey;">
+            <i class="fas fa-square"></i>
+          </span> beside desired date.</p>
+
+<p>A checkmark <span style="font-size: 1em; color: black;">
+            <i class="fas fa-check-square"></i>
+          </span> will appear when at least one reservation is confirmed</i></p>
+
+  <td><span style="font-size: 1em; color: green;">
+      <i class="fas fa-door-open"></i> Opened
+      </span>
+  </td>
+  <td><span style="font-size: 1em; color: red;">
+      <i class="fas fa-door-closed"></i> Closed
+      </span>
+  </td>
+
+
+<table class="table-striped"  >
+  <thead>
+    <tr>
+      <th><i class="fas fa-calendar "></i></th>
+      <th><i class="fas fa-bookmark "></i></th>
+      <th><i class="fas fa-store "></i></th>
+    </tr>
+  </thead>
+
+
+
+
+
+
+  <tbody>
+    <% @days.each do |day| %>
+
+    <% if  day.name >= firstday %>
+      
+      <% if day.name < today %>
+        <tr style="color:red; text-decoration: line-through;">
+      <% else %>
+        <tr>
+      <% end %>
+
+      <% if day.open_close.name == "Closed" %>
+        <td style="color:red;">
+      <% else %>
+        <td>      
+      <% end %>
+
+
+      <%= day.name.strftime("%a %b %-d '%y")   %> </td>
+        
+      <% if day.open_close.name == "Open" %>
+        <% if day.reservations.where('member_id = ?',current_member.id).count > 0 %>
+          <td> <%= link_to day  do %> 
+            <span style="font-size: 2em; color: black;">
+              <i class="fas fa-check-square"></i>
+            </span>           
+            <% end %> 
+          </td>
+        <% else %>
+          <td> <%= link_to day  do %> 
+            <span style="font-size: 2em; color: grey;">
+              <i class="fas fa-square"></i>
+            </span>           
+            <% end %> 
+          </td>
+        <% end %>
+  
+      <% else %>
+        <td></td>
+      <% end %>
+
+      <% if current_member.membership.name == "Admin" or current_member.membership.name == "Operator"  %>
+
+        <td> <%= link_to toggle_open_close_status_day_path(day)  do %> 
+          <% if day.open_close.name == "Open"  %>
+            <span style="font-size: 1em; color: green;">
+              <i class="fas fa-door-open"></i></td>
+            </span>
+          <% else %>                  
+            <span style="font-size: 1em; color: red;">
+              <i class="fas fa-door-closed"></i></td>  
+            </span>
+          <% end %>
+        <% end %>   
+          
+      <% else %>
+        <% if day.open_close.name == "Open" %>
+          <td><span style="font-size: 1em; color: green;">
+              <i class="fas fa-door-open"></i>
+              </span>
+          </td>
+        <% else %>                  
+          <td><span style="font-size: 1em; color: red;">
+                <i class="fas fa-door-closed"></i>                                    
+               </span>
+          </td>                      
+        <% end %>
+      <% end %>
+    </tr>
+    <% end %>
+  <% end %>  <!-- temporary start -->
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+

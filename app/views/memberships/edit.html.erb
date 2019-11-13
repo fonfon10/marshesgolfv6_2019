@@ -1,6 +1,12 @@
-<h1>Editing Membership</h1>
 
-<%= render 'form', membership: @membership %>
+<% if current_member.membership.name == "Admin" %>
 
-<%= link_to 'Show', @membership %> |
-<%= link_to 'Back', memberships_path %>
+
+	<h1>Editing Membership</h1>
+
+	<%= render 'form', membership: @membership %>
+
+	<%= link_to 'Show', @membership %> |
+	<%= link_to 'Back', memberships_path %>
+
+<% end %>

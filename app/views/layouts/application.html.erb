@@ -7,14 +7,30 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+ 
 
-  <body>
+    </head>
+
+
+
+    <body>
 
     <%= render 'layouts/navbar'  %>
 
 
+    <% if member_signed_in?  %>
+      <h3> <%= current_member.firstname %> <%= current_member.lastname %> / <%= current_member.age_group.name %> <%= current_member.membership.name %> </h3>
+    <% end %>
 
-    <%= yield %>
-  </body>
+
+    <div id="main-container" class="container-fluid" >
+        <%= yield %>
+    </div>
+        
+
+    </body>
+
+    <%= render 'layouts/footer'  %>
+
+
 </html>

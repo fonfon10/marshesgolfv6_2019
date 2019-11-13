@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<% thisday = @reservations[0].day.name %>
+
+
+<h1>Reservations <%= thisday.strftime("%A/%d-%^b-%y") %></h1>
+
+<table class="table-striped">
+  <thead>
+    <tr>
+      <th>Timeslot</th>
+      <th>Bay #</th>
+      <th>Member</th>
+      <th>Activity</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservations.each do |r| %>
+      <tr>
+        <td><%= r.timeslot.start.strftime("%H:%M") %></td>
+        <td><%= r.bay %></td>
+        <% if r.member.lastname != "" %>        
+          <td><%= r.member.lastname%>, <%= r.member.firstname %></td>
+        <% else %>
+          <td></td>
+        <% end %>
+        <td><%= r.activity.name %></td>
+        <td><%= link_to 'Edit', edit_reservation_path(r) %></td>
+        <td> <%= link_to cancel_reservation_path(r)  do %> 
+           <i class="glyphicon glyphicon-trash "></i>   
+        <% end %> 
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Timeslot', new_timeslot_path %>
