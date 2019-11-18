@@ -93,7 +93,7 @@ end
 def edit
   @reservation = Reservation.find(params[:id])
 
-#  @timeslots = Timeslot.order('start ASC').map { |i| [i.start, i.id]}
+  @timeslots = Timeslot.order('start ASC').map { |i| [i.start, i.id]}
   @activities = Activity.order('name ASC').map { |i| [i.name, i.id]}
   @members = Member.order('lastname ASC').map { |i| [i.lastname+', '+i.firstname, i.id]}
 

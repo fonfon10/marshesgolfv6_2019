@@ -3,6 +3,31 @@
 <% firstday = Date.new(2018,12,31) %>
 <% today = Date.today  %>
 
+
+
+<% if current_member.membership.name != "Admin" and current_member.membership.name != "Operator" %>
+  <h1>Bookings:  
+
+    <% until @reservations_count == 0 %>
+
+      <i class="fas fa-circle "></i>
+      <% @reservations_count = @reservations_count - 1 %>
+
+    <% end %>
+
+    <% until @reservations_available_count == 0 %>
+
+      <i class="fas fa-circle-notch"></i>
+      <% @reservations_available_count = @reservations_available_count - 1 %>
+
+    <% end %>
+
+  </h1>
+
+<% end %>
+
+
+
 <% if  current_member.membership.name != "Operator"%>
   
 <% if @reservations.count != 0 %>

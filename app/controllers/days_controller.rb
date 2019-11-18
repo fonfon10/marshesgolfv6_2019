@@ -14,6 +14,10 @@ end
 
 if current_member.membership.name != "Admin" and current_member.membership.name != "Operator"
 	@days = Day.where('name >= ?', Date.today).first(number_of_days)
+
+	count_weekly_registrations
+
+
 else
 	@days = Day.all.order(id: :asc)
 end
@@ -34,6 +38,16 @@ end
 def show
 	nextDay = params[:id].to_i+1
   @nextDay = Day.find(nextDay)
+
+#to count the number of registrations
+	if Time.now.getlocal('-05:00').hour >= 7 #for heroku timezone
+		number_of_days = 8	
+	else
+		number_of_days = 7	
+	end
+	@days = Day.where('name >= ?', Date.today).first(number_of_days)
+	count_weekly_registrations
+
 
 
 	day = Day.find(params[:id])
@@ -75,6 +89,21 @@ end
 
 
   private
+
+  	def count_weekly_registrations
+  		reservations = Reservation.all
+			@reservations_member = current_member.reservations
+			@reservations_count = 0
+
+			@days.each do |d|	
+
+			@reservations_count = @reservations_count + @reservations_member.where('day_id = ?', d.id).count
+			@reservations_available_count = MAX_WEEKLY_BOOKINGS - @reservations_count
+		end	
+
+  		
+  	end
+
 
     def day_params
       params.require(:day).permit(:name, :open_close_id)

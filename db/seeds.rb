@@ -16,15 +16,23 @@ Member.delete_all
 starttime = 10	
 endtime = 20
 
-while starttime < endtime do 
-	ts = starttime.to_s+':00'
-	Timeslot.create!(start: ts)
-	ts = starttime.to_s+':30'
-	Timeslot.create!(start: ts)
-	starttime += 1
-end	
+#while starttime < endtime do 
+#	ts = starttime.to_s+':00'
+#	Timeslot.create!(start: ts)
+#	ts = starttime.to_s+':30'
+#	Timeslot.create!(start: ts)
+#	starttime += 1
+#end	
 
 
+ts_all = ['10:00', '10:45', '11:30', '12:15',
+					'13:00', '13:45', '14:30', '15:15',
+					'16:00', '16:45', '17:30', '18:15',
+					'19:00']
+
+ts_all.each do |ts|
+	Timeslot.create!(start: ts)
+end
 
 
 #membership
@@ -90,9 +98,10 @@ activity_type_closed = Activity.last
 
 
 Member.create!(firstname:'Serge', lastname:'Lafontaine', email: 'slafontaine10@gmail.com', password: 'numb10', password_confirmation: 'numb10', membership: membership_type_Admin, age_group: age_group_type_adult)
-m = Member.create!(firstname: 'a', lastname: 'a', email: 'open@marshesgolfclub.com', password: 'MarshesRocks', password_confirmation: 'MarshesRocks', membership: membership_type_Operator, age_group: age_group_type_adult)
+m = Member.create!(firstname: '-', lastname: '-', email: 'open@marshesgolfclub.com', password: 'MarshesRocks', password_confirmation: 'MarshesRocks', membership: membership_type_Operator, age_group: age_group_type_adult)
 Member.create!(firstname: 'Derek', lastname: 'MacDonald', email: 'derek.macdonald@marshesgolfclub.com', password: 'MarshesRocks', password_confirmation: 'MarshesRocks', membership: membership_type_Operator, age_group: age_group_type_adult)
 Member.create!(firstname: 'Carson', lastname: 'Scissons', email: 'carson.scissons@marshesgolfclub.com', password: 'MarshesRocks', password_confirmation: 'MarshesRocks', membership: membership_type_Operator, age_group: age_group_type_adult)
+Member.create!(firstname: 'Ashley', lastname: 'Lafontaine', email: 'ashleylafontaine27@gmail.com', password: 'numb10', password_confirmation: 'numb10', membership: membership_type_Coaching, age_group: age_group_type_junior)
 
 
 
@@ -105,7 +114,7 @@ Member.create!(firstname: 'Carson', lastname: 'Scissons', email: 'carson.scisson
 @days.each do |d|
 	@timeslots.each do |t|
 
-		if d.name.sunday? and (t.start.hour < 11 or t.start.hour > 18)
+		if d.name.sunday? and (t.id > 9)
 			Reservation.create!(timeslot: t, member: m, day: d, activity: activity_type_closed, bay: 1 )
 			Reservation.create!(timeslot: t, member: m, day: d, activity: activity_type_closed, bay: 2 )
 		else
