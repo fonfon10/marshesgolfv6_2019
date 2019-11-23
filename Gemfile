@@ -30,7 +30,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise'
 gem 'activeadmin'
-gem 'bootstrap',  '~>4.3.1'
+#gem 'bootstrap',  '~>4.3.1'
+gem 'bootstrap',  '~>4.1.3'
 
 # to allow setting keys and not storing values on GIT (passwords)
 gem 'figaro'  
