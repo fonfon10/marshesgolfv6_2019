@@ -6,11 +6,15 @@ before_action :authenticate_member!
 def index
 #	@days = Day.first(7)
 
-if Time.now.getlocal('-05:00').hour >= 7 #for heroku timezone
+#if Time.now.getlocal('-05:00').hour >= 7 #for heroku timezone
+#	number_of_days = 8	
+#else
 	number_of_days = 8	
-else
-	number_of_days = 7	
-end
+#end
+
+
+
+
 
 if current_member.membership.name != "Admin" and current_member.membership.name != "Operator"
 	@days = Day.where('name >= ?', Date.today).first(number_of_days)
@@ -99,6 +103,7 @@ end
 
 			@reservations_count = @reservations_count + @reservations_member.where('day_id = ?', d.id).count
 			@reservations_available_count = MAX_WEEKLY_BOOKINGS - @reservations_count
+#			@reservations_available_count = 1
 		end	
 
   		

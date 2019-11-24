@@ -5,10 +5,14 @@
 <% if current_member.membership.name != "Admin" and current_member.membership.name != "Operator" %>
   <h1>Bookings:  
 
-    <% until @reservations_count == 0 %>
+
+
+    <% reservations_counter = @reservations_count %>
+
+    <% until reservations_counter == 0 %>
 
       <i class="fas fa-circle "></i>
-      <% @reservations_count = @reservations_count - 1 %>
+      <% reservations_counter = reservations_counter - 1 %>
 
     <% end %>
 
@@ -128,9 +132,9 @@ beside the desired cancellation date/timeslot</i></p>
             <% else %>
               <% if i.even? %>
                 <% if ((@reservations[i+1].member != current_member) and 
-                  (@count_reservations.to_i < MAX_DAILY_REGISTRATIONS))  and 
+                  (@count_reservations.to_i < MAX_DAILY_REGISTRATIONS)  and 
                   (current_member.membership.name != 'Operator') and
-                  (@reservations_count < MAX_WEEKLY_BOOKINGS)%>
+                  (@reservations_count.to_i < MAX_WEEKLY_BOOKINGS))%>
                   <td>
                       <%= link_to 'Lesson', book_lesson_reservation_path(reservation),class: "btn btn-danger btn-sm btn-block"%>
 
@@ -145,8 +149,8 @@ beside the desired cancellation date/timeslot</i></p>
               <% end %>
 
               <% if i.odd? %>
-                <% if ((@reservations[i-1].member != current_member) and (@count_reservations.to_i < MAX_DAILY_REGISTRATIONS) and current_member.membership.name != 'Operator') and
-                  (@reservations_count < MAX_WEEKLY_BOOKINGS)%>
+                <% if ((@reservations[i-1].member != current_member) and (@count_reservations.to_i < MAX_DAILY_REGISTRATIONS) and (current_member.membership.name != 'Operator') and
+                  (@reservations_count.to_i < MAX_WEEKLY_BOOKINGS))%>
                   <td>             
                     <%= link_to 'Practice', book_practice_reservation_path(reservation),class: "btn btn-warning btn-sm btn-block" %>
                   </td>

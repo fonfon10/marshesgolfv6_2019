@@ -15,8 +15,11 @@ def create
   @member.password = ("golf123")
   @member.password_confirmation = ("golf123")
 
+
   if @member.save
-    redirect_to members_path
+    redirect_to root_path
+
+    puts "Saved member"
   else
     render 'new'
   end
