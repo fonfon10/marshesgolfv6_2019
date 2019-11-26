@@ -71,7 +71,7 @@ open_close_type_closed = OpenClose.last
 
 #day
 day = Date.today
-lastday = Date.new(2019,12,01)
+lastday = Date.new(2020,01,01)
 
 while day <= lastday do
 	Day.create!(name: day, open_close: open_close_type_open)

@@ -6,11 +6,11 @@ before_action :authenticate_member!
 def index
 #	@days = Day.first(7)
 
-#if Time.now.getlocal('-05:00').hour >= 7 #for heroku timezone
-#	number_of_days = 8	
-#else
+if Time.now.getlocal.hour >= 7 #for heroku timezone
 	number_of_days = 8	
-#end
+else
+	number_of_days = 7	
+end
 
 
 
