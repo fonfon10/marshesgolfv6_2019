@@ -44,7 +44,7 @@ def show
   @nextDay = Day.find(nextDay)
 
 #to count the number of registrations
-	if Time.now.getlocal('-05:00').hour >= 7 #for heroku timezone
+	if Time.now.getlocal.hour >= 7 #for heroku timezone
 		number_of_days = 8	
 	else
 		number_of_days = 7	

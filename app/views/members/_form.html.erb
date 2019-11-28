@@ -39,6 +39,24 @@
 
 
 
+
+  <% set_password = "golf123" %>
+
+  <div class="field" style="display:none">
+    <%= form.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= form.password_field :password, autocomplete: "new-password", :value => set_password  %>
+  </div>
+
+  <div class="field" style="display:none">
+    <%= form.label :password_confirmation %><br />
+    <%= form.password_field :password_confirmation, autocomplete: "new-password" , :value => set_password%>
+  </div>
+
+
+
   <div class="actions">
     <%= form.submit %>
   </div>

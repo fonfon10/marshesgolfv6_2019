@@ -36,7 +36,7 @@ end
 
 
 #membership
-membership_types = ['Operator','Practice', 'Coaching', 'Admin']
+membership_types = ['Practice', 'Coaching', 'Admin', 'Operator']
 
 membership_types.each do |m|
 	Membership.create!(name: m)
@@ -85,8 +85,8 @@ end
 
 
 
-membership_type_Operator = Membership.first
-membership_type_Admin = Membership.last
+membership_type_Operator = Membership.find_by name: 'Operator'
+membership_type_Admin = Membership.find_by name: 'Admin'
 membership_type_Coaching = Membership.find_by name: 'Coaching'
 membership_type_Practice = Membership.find_by name: 'Practice'
 
@@ -97,11 +97,11 @@ activity_type_open = Activity.first
 activity_type_closed = Activity.last
 
 
-Member.create!(firstname:'Serge', lastname:'Lafontaine', email: 'slafontaine10@gmail.com', password: 'numb10', password_confirmation: 'numb10', membership: membership_type_Admin, age_group: age_group_type_adult)
+#Member.create!(firstname:'Serge', lastname:'Lafontaine', email: 'slafontaine10@gmail.com', password: 'numb10', password_confirmation: 'numb10', membership: membership_type_Admin, age_group: age_group_type_adult)
 m = Member.create!(firstname: '-', lastname: '-', email: 'open@marshesgolfclub.com', password: 'MarshesRocks', password_confirmation: 'MarshesRocks', membership: membership_type_Operator, age_group: age_group_type_adult)
-Member.create!(firstname: 'Derek', lastname: 'MacDonald', email: 'derek.macdonald@marshesgolfclub.com', password: 'MarshesRocks', password_confirmation: 'MarshesRocks', membership: membership_type_Operator, age_group: age_group_type_adult)
-Member.create!(firstname: 'Carson', lastname: 'Scissons', email: 'carson.scissons@marshesgolfclub.com', password: 'MarshesRocks', password_confirmation: 'MarshesRocks', membership: membership_type_Operator, age_group: age_group_type_adult)
-Member.create!(firstname: 'Ashley', lastname: 'Lafontaine', email: 'ashleylafontaine27@gmail.com', password: 'numb10', password_confirmation: 'numb10', membership: membership_type_Coaching, age_group: age_group_type_junior)
+#Member.create!(firstname: 'Derek', lastname: 'MacDonald', email: 'derek.macdonald@marshesgolfclub.com', password: 'MarshesRocks', password_confirmation: 'MarshesRocks', membership: membership_type_Operator, age_group: age_group_type_adult)
+#Member.create!(firstname: 'Carson', lastname: 'Scissons', email: 'carson.scissons@marshesgolfclub.com', password: 'MarshesRocks', password_confirmation: 'MarshesRocks', membership: membership_type_Operator, age_group: age_group_type_adult)
+#Member.create!(firstname: 'Ashley', lastname: 'Lafontaine', email: 'ashleylafontaine27@gmail.com', password: 'numb10', password_confirmation: 'numb10', membership: membership_type_Coaching, age_group: age_group_type_junior)
 
 
 

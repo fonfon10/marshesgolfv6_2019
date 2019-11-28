@@ -1,12 +1,11 @@
 class MembersController < InheritedResources::Base
-before_action :authenticate_member!
-
+#before_action :authenticate_member!
 
 
 def new
   @member = Member.new
   @age_groups = AgeGroup.order('name ASC').map { |i| [i.name, i.id]}
-  @memberships = Membership.order('name ASC').map { |i| [i.name, i.id]}
+  @memberships = Membership.first(4).map { |i| [i.name, i.id]}
 
 end
 
@@ -18,8 +17,6 @@ def create
 
   if @member.save
     redirect_to root_path
-
-    puts "Saved member"
   else
     render 'new'
   end
