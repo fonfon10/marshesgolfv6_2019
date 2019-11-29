@@ -3,4 +3,5 @@ class Reservation < ApplicationRecord
 	belongs_to :member
 	belongs_to :timeslot
 	belongs_to :day
+	belongs_to :membership
 end

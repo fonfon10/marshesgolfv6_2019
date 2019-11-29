@@ -5,7 +5,7 @@ class MembersController < InheritedResources::Base
 def new
   @member = Member.new
   @age_groups = AgeGroup.order('name ASC').map { |i| [i.name, i.id]}
-  @memberships = Membership.first(4).map { |i| [i.name, i.id]}
+  @memberships = Membership.first(2).map { |i| [i.name, i.id]}
 
 end
 

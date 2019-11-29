@@ -20,6 +20,7 @@ def create
   puts @reservation.member_id
   @reservation.activity_id = params[:activity_id]
   @reservation.bay = params[:bay]
+  @reservation.membership_id = current_member.membership.id
 
 
 
@@ -53,6 +54,8 @@ def book_lesson
     activity_type_lesson = Activity.find_by name: 'Lesson'
     @reservation.update(activity: activity_type_lesson)
 
+    @reservation.update(membership: current_member.membership)
+
     @reservation.save
     redirect_to days_path, notice: 'Lesson Successfully Booked' 
   else
@@ -67,6 +70,7 @@ def book_practice
     @reservation.update(member: current_member)
     activity_type_lesson = Activity.find_by name: 'Practice'
     @reservation.update(activity: activity_type_lesson)
+    @reservation.update(membership: current_member.membership)
 
     @reservation.save
     redirect_to days_path, notice: 'Practice Successfully Booked'
@@ -84,6 +88,7 @@ def cancel
   @reservation = Reservation.find(params[:id])
   @reservation.update(member: m)
   @reservation.update(activity: activity_type_lesson)
+  @reservation.update(membership: o)
   @reservation.save
   redirect_to days_path,  notice: 'Lesson/Practice Successfully Cancelled'
 end
@@ -112,7 +117,7 @@ end
   private
 
     def reservation_params
-      params.require(:reservation).permit(:timeslot_id, :member_id, :activity_id, :day, :bay)
+      params.require(:reservation).permit(:timeslot_id, :member_id, :activity_id, :day, :bay, :membership_id)
     end
 end
 

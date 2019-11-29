@@ -4,6 +4,9 @@
 <% today = Date.today  %>
 
 
+<%= Time.now.getlocal %>
+
+
 
 <% if current_member.membership.name != "Admin" and current_member.membership.name != "Operator" %>
   <h4>Bookings:  
@@ -42,6 +45,7 @@
         <th><i class="fas fa-calendar "></i></th>
         <th><i class="fas fa-clock "></i></th>
         <th><i class="fas fa-golf-ball "></i></th>
+        <th> </th>
       </tr>
     </thead>
 
@@ -59,7 +63,21 @@
 
           <td><%= reservation.day.name.strftime("%a %b %-d '%y") %></td>        
           <td><%= reservation.timeslot.start.strftime("%H:%M") %></td>        
-          <td><%= reservation.activity.name %></td>        
+          <td><%= reservation.activity.name %></td>   
+
+          <td>
+            
+            <% if (reservation.membership == current_member.membership) %>
+              <i>self</i>
+            <% else %>
+              <i>admin</i>
+            <% end %>
+
+
+          </td>
+
+
+
         </tr>
 
        <% end %>

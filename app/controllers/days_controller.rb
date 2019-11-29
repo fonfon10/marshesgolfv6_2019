@@ -96,7 +96,7 @@ end
 
   	def count_weekly_registrations
   		reservations = Reservation.all
-			@reservations_member = current_member.reservations
+			@reservations_member = current_member.reservations.where('membership_id = ?', current_member.membership.id)
 			@reservations_count = 0
 
 			@days.each do |d|	

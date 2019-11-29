@@ -97,7 +97,7 @@ activity_type_open = Activity.first
 activity_type_closed = Activity.last
 
 
-#Member.create!(firstname:'Serge', lastname:'Lafontaine', email: 'slafontaine10@gmail.com', password: 'numb10', password_confirmation: 'numb10', membership: membership_type_Admin, age_group: age_group_type_adult)
+Member.create!(firstname:'Serge', lastname:'Lafontaine', email: 'slafontaine10@gmail.com', password: 'numb10', password_confirmation: 'numb10', membership: membership_type_Admin, age_group: age_group_type_adult)
 m = Member.create!(firstname: '-', lastname: '-', email: 'open@marshesgolfclub.com', password: 'MarshesRocks', password_confirmation: 'MarshesRocks', membership: membership_type_Operator, age_group: age_group_type_adult)
 #Member.create!(firstname: 'Derek', lastname: 'MacDonald', email: 'derek.macdonald@marshesgolfclub.com', password: 'MarshesRocks', password_confirmation: 'MarshesRocks', membership: membership_type_Operator, age_group: age_group_type_adult)
 #Member.create!(firstname: 'Carson', lastname: 'Scissons', email: 'carson.scissons@marshesgolfclub.com', password: 'MarshesRocks', password_confirmation: 'MarshesRocks', membership: membership_type_Operator, age_group: age_group_type_adult)
@@ -115,11 +115,11 @@ m = Member.create!(firstname: '-', lastname: '-', email: 'open@marshesgolfclub.c
 	@timeslots.each do |t|
 
 		if d.name.sunday? and (t.id > 9)
-			Reservation.create!(timeslot: t, member: m, day: d, activity: activity_type_closed, bay: 1 )
-			Reservation.create!(timeslot: t, member: m, day: d, activity: activity_type_closed, bay: 2 )
+			Reservation.create!(timeslot: t, member: m, day: d, activity: activity_type_closed, bay: 1, membership: membership_type_Operator )
+			Reservation.create!(timeslot: t, member: m, day: d, activity: activity_type_closed, bay: 2, membership: membership_type_Operator )
 		else
-			Reservation.create!(timeslot: t, member: m, day: d, activity: activity_type_open, bay: 1 )
-			Reservation.create!(timeslot: t, member: m, day: d, activity: activity_type_open, bay: 2 )
+			Reservation.create!(timeslot: t, member: m, day: d, activity: activity_type_open, bay: 1, membership: membership_type_Operator )
+			Reservation.create!(timeslot: t, member: m, day: d, activity: activity_type_open, bay: 2, membership: membership_type_Operator )
 		end
 	end
 end	

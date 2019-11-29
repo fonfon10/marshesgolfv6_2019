@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 2019_11_13_023748) do
     t.integer "activity_id"
     t.integer "day_id"
     t.integer "bay"
+    t.integer "membership_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
