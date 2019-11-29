@@ -70,7 +70,7 @@ open_close_type_closed = OpenClose.last
 
 
 #day
-day = Date.new(2019,12,02)
+day = Date.new(2019,12,03)
 lastday = Date.new(2020,05,01)
 
 while day <= lastday do
@@ -99,9 +99,9 @@ activity_type_closed = Activity.last
 
 Member.create!(firstname:'Serge', lastname:'Lafontaine', email: 'slafontaine10@gmail.com', password: 'numb10', password_confirmation: 'numb10', membership: membership_type_Admin, age_group: age_group_type_adult)
 m = Member.create!(firstname: '-', lastname: '-', email: 'open@marshesgolfclub.com', password: 'MarshesRocks', password_confirmation: 'MarshesRocks', membership: membership_type_Operator, age_group: age_group_type_adult)
-#Member.create!(firstname: 'Derek', lastname: 'MacDonald', email: 'derek.macdonald@marshesgolfclub.com', password: 'MarshesRocks', password_confirmation: 'MarshesRocks', membership: membership_type_Operator, age_group: age_group_type_adult)
-#Member.create!(firstname: 'Carson', lastname: 'Scissons', email: 'carson.scissons@marshesgolfclub.com', password: 'MarshesRocks', password_confirmation: 'MarshesRocks', membership: membership_type_Operator, age_group: age_group_type_adult)
-#Member.create!(firstname: 'Ashley', lastname: 'Lafontaine', email: 'ashleylafontaine27@gmail.com', password: 'numb10', password_confirmation: 'numb10', membership: membership_type_Coaching, age_group: age_group_type_junior)
+#Member.create!(firstname: 'Derek', lastname: 'MacDonald', email: 'derek.macdonald@marshesgolfclub.com', password: 'golf123', password_confirmation: 'golf123', membership: membership_type_Operator, age_group: age_group_type_adult)
+#Member.create!(firstname: 'Carson', lastname: 'Scissons', email: 'carson.scissons@marshesgolfclub.com', password: 'golf123', password_confirmation: 'golf123', membership: membership_type_Operator, age_group: age_group_type_adult)
+#Member.create!(firstname: 'Ashley', lastname: 'Lafontaine', email: 'ashleylafontaine27@gmail.com', password: 'golf123', password_confirmation: 'golf123', membership: membership_type_Coaching, age_group: age_group_type_junior)
 
 
 
@@ -127,9 +127,9 @@ end
 
 
 Member.create!(firstname:	'Analog'	,lastname:	'Lafontaine'	,email:	'serge.lafontaine@analog.com', password: 'golf123', password_confirmation: 'golf123', membership: membership_type_Practice, age_group: age_group_type_adult)
-#Member.create!(firstname:	'Allen'	,lastname:	'Hopley'	,email:	'allen.hopley@gmail.com', password: 'golf123', password_confirmation: 'golf123', membership: membership_type_Practice, age_group: age_group_type_adult)
-#Member.create!(firstname:	'Carol'	,lastname:	'Pelger-Downing'	,email:	'cpelgerdowning@gmail.com', password: 'golf123', password_confirmation: 'golf123', membership: membership_type_Practice, age_group: age_group_type_adult)
-#Member.create!(firstname:	'David'	,lastname:	'So'	,email:	'davidso3333@yahoo.com', password: 'golf123', password_confirmation: 'golf123', membership: membership_type_Practice, age_group: age_group_type_adult)
+#member.create!(firstname:	'Allen'	,lastname:	'Hopley'	,email:	'allen.hopley@gmail.com', password: 'golf123', password_confirmation: 'golf123', membership: membership_type_Practice, age_group: age_group_type_adult)
+#member.create!(firstname:	'Carol'	,lastname:	'Pelger-Downing'	,email:	'cpelgerdowning@gmail.com', password: 'golf123', password_confirmation: 'golf123', membership: membership_type_Practice, age_group: age_group_type_adult)
+#member.create!(firstname:	'David'	,lastname:	'So'	,email:	'davidso3333@yahoo.com', password: 'golf123', password_confirmation: 'golf123', membership: membership_type_Practice, age_group: age_group_type_adult)
 #member.create!(firstname:	'Dave'	,lastname:	'Beattie'	,email:	'dbjet@rogers.com', password: 'golf123', password_confirmation: 'golf123', membership: membership_type_Practice, age_group: age_group_type_adult)
 #member.create!(firstname:	'Derek'	,lastname:	'Chalker'	,email:	'dchalker2109@gmail.com', password: 'golf123', password_confirmation: 'golf123', membership: membership_type_Coaching, age_group: age_group_type_adult)
 #member.create!(firstname:	'David' 	,lastname:	'Kelly'	,email:	'djkelly0725@gmail.com', password: 'golf123', password_confirmation: 'golf123', membership: membership_type_Practice, age_group: age_group_type_adult)
