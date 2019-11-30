@@ -165,8 +165,8 @@ Member.create!(firstname:	'Will'	,lastname:	'Rado'	,email:	'will.rado@gmail.com'
 Member.create!(firstname:	'Carol'	,lastname:	'Pelger-Downing'	,email:	'cpelgerdowning@gmail.com', password: 'golf123', password_confirmation: 'golf123', membership: membership_type_Practice, age_group: age_group_type_adult)
 Member.create!(firstname:	'Sean'	,lastname:	'Miller'	,email:	'miller33@mail.com', password: 'golf123', password_confirmation: 'golf123', membership: membership_type_Practice, age_group: age_group_type_adult)
 Member.create!(firstname:	'Brian'	,lastname:	'ODriscoll'	,email:	'brianandsusan@rogers.com', password: 'golf123', password_confirmation: 'golf123', membership: membership_type_Practice, age_group: age_group_type_adult)
-Member.create!((firstname:	'Doug'	,lastname:	'Hewson'	,email:	'dhewson@portlandpe.com', password: 'golf123', password_confirmation: 'golf123', membership: membership_type_Practice, age_group: age_group_type_adult)
-Member.create!((firstname:	'Yaorui'	,lastname:	'Xu'	,email:	'hong1995@gmail.com', password: 'golf123', password_confirmation: 'golf123', membership: membership_type_Practice, age_group: age_group_type_junior)
+Member.create!(firstname:	'Doug'	,lastname:	'Hewson'	,email:	'dhewson@portlandpe.com', password: 'golf123', password_confirmation: 'golf123', membership: membership_type_Practice, age_group: age_group_type_adult)
+Member.create!(firstname:	'Yaorui'	,lastname:	'Xu'	,email:	'hong1995@gmail.com', password: 'golf123', password_confirmation: 'golf123', membership: membership_type_Practice, age_group: age_group_type_junior)
 
 
 
