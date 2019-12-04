@@ -4,36 +4,34 @@ before_action :authenticate_member!
 
 
 def index
-#	@days = Day.first(7)
+	#	@days = Day.first(7)
 
-if Time.now.getlocal.hour >= 7 #for heroku timezone
-	number_of_days = 8	
-else
-	number_of_days = 7	
-end
-
-
+	if Time.now.getlocal.hour >= 7 #for heroku timezone
+		number_of_days = 8	
+	else
+		number_of_days = 7	
+	end
 
 
+#	if current_member.membership.name != "Admin" and current_member.membership.name != "Operator"
+	if !current_member.admin? and !current_member.operator?
+		@days = Day.where('name >= ?', Date.today).first(number_of_days)
 
-if current_member.membership.name != "Admin" and current_member.membership.name != "Operator"
-	@days = Day.where('name >= ?', Date.today).first(number_of_days)
-
-	count_weekly_registrations
+		count_weekly_registrations
 
 
-else
-	@days = Day.all.order(id: :asc)
-end
+	else
+		@days = Day.all.order(id: :asc)
+	end
 
-activity_lesson = Activity.find_by name: "Lesson"
+	activity_lesson = Activity.find_by name: "Lesson"
 
-if current_member.membership.name != "Operator"
-	@reservations = Reservation.where('member_id = ?', current_member.id).order(id: :asc)
-else
-	@reservations = Reservation.where('activity_id = ?', activity_lesson.id).order(id: :asc)
+	if current_member.membership.name != "Operator"
+		@reservations = Reservation.where('member_id = ?', current_member.id).order(id: :asc)
+	else
+		@reservations = Reservation.where('activity_id = ?', activity_lesson.id).order(id: :asc)
 
-end
+	end
 
 		
 end
@@ -54,16 +52,39 @@ def show
 
 
 
-	day = Day.find(params[:id])
-	@reservations = Reservation.where('day_id = ?', day.id).order(id: :asc)
-#	@reservations = r.order(id: :asc)
-#	cr = @reservations.where('member_id = ?', current_member.id)
-	if member_signed_in? and current_member.membership.name != "Operator"
-  	@count_reservations = @reservations.where('member_id = ?', current_member.id).count
+	today_date = Date.today
+	today = Day.find_by name: today_date
+
+	if (params[:id].to_i < (today.id+number_of_days)) and (params[:id].to_i >= (today.id))
+		day = Day.find(params[:id])
+	else
+		day = today
 	end	
-#  @count_reservations = cr.count
+
+
+#	if current_member.membership.name == "Operator" or current_member.membership.name == "Admin"
+	if current_member.operator? or current_member.admin?
+			day = Day.find(params[:id])
+	end	
+
+
+
+		@reservations = Reservation.where('day_id = ?', day.id).order(id: :asc)
+	#	@reservations = r.order(id: :asc)
+	#	cr = @reservations.where('member_id = ?', current_member.id)
+		if member_signed_in? and current_member.membership.name != "Operator"
+	  	@count_reservations = @reservations.where('member_id = ?', current_member.id).count
+		end	
+	#  @count_reservations = cr.count
+
+
+
+
 
 end
+
+
+
 
 
 def toggle_open_close_status

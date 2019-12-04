@@ -16,7 +16,8 @@ before_action :authenticate_member!
   def show
 
   	# display any member stats if ADMIN/OPERATOR and only member stat if member
-		if (current_member.membership.name == "Admin" or current_member.membership.name == "Operator")
+#    if (current_member.membership.name == "Admin" or current_member.membership.name == "Operator")
+    if (current_member.admin? or current_member.operator?)
 			@member = Member.find(params[:id])
 		else
 			@member = current_member

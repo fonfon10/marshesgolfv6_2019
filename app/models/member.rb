@@ -10,4 +10,16 @@ class Member < ApplicationRecord
 	belongs_to :age_group
 	has_many :reservations
 
+
+
+def operator?
+	self.membership.name == "Operator"
+end
+
+def admin?
+	self.membership.name == "Admin"
+end
+
+
+
 end
